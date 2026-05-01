@@ -44,12 +44,12 @@ function AINative() {
       <div className="shell">
         <Reveal>
           <div style={{ marginBottom: 48, maxWidth: '60ch' }}>
-            <span className="eyebrow">The implementation chain</span>
+            <span className="eyebrow">Our AI stack</span>
             <h2 className="h1" style={{ marginTop: 20 }}>
-              One stack. <span style={{ color: 'var(--moss-400)' }}>Discovery to configuration.</span>
+              Proprietary AI. <span style={{ color: 'var(--moss-400)' }}>The full implementation chain.</span>
             </h2>
             <p className="lede" style={{ marginTop: 20 }}>
-              Other firms bolt AI onto a manual process. We built ours into the work itself — discovery, gap analysis, and configuration on one proprietary stack. Nothing gets re-typed between phases.
+              Other firms resell off-the-shelf AI — a chatbot here, a summarizer there. We built our own software for ERP implementation. One stack carries discovery, gap analysis, and configuration end to end. Nothing gets bolted on. Nothing gets re-typed.
             </p>
           </div>
         </Reveal>
