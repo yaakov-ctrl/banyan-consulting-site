@@ -70,8 +70,32 @@ function AINative() {
       </div>
       <style>{`
         .ai-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
-        .ai-flow > .reveal { display: flex; }
+        .ai-flow > .reveal { display: flex; position: relative; }
         .ai-flow > .reveal > .ai-flow-card { flex: 1; }
+        .ai-flow > .reveal:not(:last-child)::after {
+          content: '→';
+          position: absolute;
+          right: 0;
+          top: 50%;
+          transform: translate(50%, -50%);
+          width: 28px;
+          height: 28px;
+          border-radius: 50%;
+          background: var(--ink-100);
+          border: 1px solid var(--glass-line-strong);
+          color: var(--moss-400);
+          font-family: var(--mono);
+          font-size: 14px;
+          line-height: 1;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          z-index: 2;
+          pointer-events: none;
+        }
+        @media (max-width: 1000px) {
+          .ai-flow > .reveal:not(:last-child)::after { display: none; }
+        }
         .ai-flow-card {
           position: relative;
           background: var(--ink-100);
