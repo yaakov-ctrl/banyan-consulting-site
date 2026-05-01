@@ -43,12 +43,13 @@ function AINative() {
     <section style={{ padding: '96px 0', background: 'var(--ink-200)', borderTop: '1px solid var(--glass-line)', borderBottom: '1px solid var(--glass-line)' }}>
       <div className="shell">
         <Reveal>
-          <div style={{ marginBottom: 48, maxWidth: '60ch' }}>
+          <div style={{ marginBottom: 48 }}>
             <span className="eyebrow">Our AI stack</span>
-            <h2 className="h1" style={{ marginTop: 20 }}>
-              Proprietary AI. <span style={{ color: 'var(--moss-400)' }}>The full implementation chain.</span>
+            <h2 className="h1" style={{ marginTop: 20, maxWidth: '20ch' }}>
+              Proprietary AI.<br/>
+              <span style={{ color: 'var(--moss-400)' }}>The full implementation chain.</span>
             </h2>
-            <p className="lede" style={{ marginTop: 20 }}>
+            <p className="lede" style={{ marginTop: 24, maxWidth: '60ch' }}>
               Other firms resell off-the-shelf AI — a chatbot here, a summarizer there. We built our own software for ERP implementation. One stack carries discovery, gap analysis, and configuration end to end. Nothing gets bolted on. Nothing gets re-typed.
             </p>
           </div>
