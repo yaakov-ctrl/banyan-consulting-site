@@ -4,7 +4,7 @@ const { useState: useStateA, useEffect: useEffectA } = React;
 /* ============= ABOUT ============= */
 function AboutHero() {
   return (
-    <section style={{ padding: '180px 0 80px', position: 'relative' }}>
+    <section style={{ padding: '160px 0 48px', position: 'relative' }}>
       <div className="shell" style={{ position: 'relative', zIndex: 2 }}>
         <span className="eyebrow">About Banyan</span>
         <h1 className="h-display" style={{ marginTop: 32, maxWidth: '16ch' }}>
@@ -40,10 +40,10 @@ function AINative() {
     },
   ];
   return (
-    <section style={{ padding: '60px 0 120px' }}>
+    <section style={{ padding: '32px 0 72px' }}>
       <div className="shell">
         <Reveal>
-          <div style={{ marginBottom: 56, maxWidth: '64ch' }}>
+          <div style={{ marginBottom: 40, maxWidth: '64ch' }}>
             <span className="eyebrow">AI-native stack</span>
             <h2 className="h1" style={{ marginTop: 24 }}>
               <span style={{ color: 'var(--moss-400)' }}>Truly AI-native</span>, from first call to go-live.
@@ -97,12 +97,12 @@ function Manifesto() {
     { n: '06', t: 'Your team owns the system.', d: 'A successful engagement ends with you needing us less, not more. We embed, train, and step back. Lock-in is the opposite of partnership.' },
   ];
   return (
-    <section style={{ padding: '60px 0 160px' }}>
+    <section style={{ padding: '32px 0 88px' }}>
       <div className="shell">
         <Reveal>
-          <div style={{ marginBottom: 60 }}>
+          <div style={{ marginBottom: 40 }}>
             <span className="eyebrow">Our manifesto</span>
-            <h2 className="h1" style={{ marginTop: 24, maxWidth: '14ch' }}>Six things <span style={{}}>we believe</span>.</h2>
+            <h2 className="h1" style={{ marginTop: 20, maxWidth: '14ch' }}>Six things <span style={{}}>we believe</span>.</h2>
           </div>
         </Reveal>
         <div className="manifesto-grid">
@@ -121,7 +121,9 @@ function Manifesto() {
         .manifesto-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--glass-line); border: 1px solid var(--glass-line); border-radius: 18px; overflow: hidden; }
         @media (max-width: 1000px) { .manifesto-grid { grid-template-columns: repeat(2, 1fr); } }
         @media (max-width: 600px) { .manifesto-grid { grid-template-columns: 1fr; } }
-        .manifesto-card { background: var(--ink-100); padding: 36px; min-height: 280px; transition: background 0.3s; }
+        .manifesto-grid > .reveal { display: flex; }
+        .manifesto-grid > .reveal > .manifesto-card { flex: 1; }
+        .manifesto-card { background: var(--ink-100); padding: 32px; min-height: 260px; transition: background 0.3s; }
         .manifesto-card:hover { background: var(--ink-200); }
       `}</style>
     </section>
@@ -148,12 +150,12 @@ function Team() {
     { name: 'TBA', role: 'Bilingual Training & Adoption Lead', bio: 'Coming soon — EN/ES training, change management, super-user programs.', cred: 'Open role', placeholder: true },
   ];
   return (
-    <section style={{ padding: '160px 0', borderTop: '1px solid var(--glass-line)', background: 'var(--ink-200)' }}>
+    <section style={{ padding: '88px 0 96px', borderTop: '1px solid var(--glass-line)', background: 'var(--ink-200)' }}>
       <div className="shell">
-        <div style={{ marginBottom: 60 }}>
+        <div style={{ marginBottom: 40 }}>
           <span className="eyebrow">The team</span>
-          <h2 className="h1" style={{ marginTop: 24, maxWidth: '20ch' }}>The people <span style={{ color: 'var(--moss-400)' }}>actually</span> on your project.</h2>
-          <p className="lede" style={{ marginTop: 24, maxWidth: '60ch' }}>No offshore relay, no junior account manager between you and the work. The names below are the ones who answer your emails.</p>
+          <h2 className="h1" style={{ marginTop: 20, maxWidth: '20ch' }}>The people <span style={{ color: 'var(--moss-400)' }}>actually</span> on your project.</h2>
+          <p className="lede" style={{ marginTop: 20, maxWidth: '60ch' }}>No offshore relay, no junior account manager between you and the work. The names below are the ones who answer your emails.</p>
         </div>
         <div className="team-grid">
           {team.map((m, i) => (
@@ -181,9 +183,11 @@ function Team() {
         </div>
       </div>
       <style>{`
-        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 20px; }
+        .team-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
         @media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
-        .team-card { background: var(--ink-100); border: 1px solid var(--glass-line); border-radius: 18px; padding: 28px; display: grid; grid-template-columns: 120px 1fr; gap: 28px; align-items: start; }
+        .team-grid > .reveal { display: flex; }
+        .team-grid > .reveal > .team-card { flex: 1; }
+        .team-card { background: var(--ink-100); border: 1px solid var(--glass-line); border-radius: 18px; padding: 24px; display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: start; }
         .team-card.featured { border-color: var(--moss-700); background: var(--ink-300); box-shadow: var(--shadow-accent); }
         .team-card.placeholder { opacity: 0.6; }
         .team-card.placeholder .team-portrait { background: linear-gradient(135deg, var(--ink-200), var(--ink-100)); }
@@ -198,10 +202,10 @@ function Team() {
 
 function Numbers() {
   return (
-    <section style={{ padding: '160px 0', borderTop: '1px solid var(--glass-line)' }}>
+    <section style={{ padding: '88px 0 96px', borderTop: '1px solid var(--glass-line)' }}>
       <div className="shell">
         <span className="eyebrow">By the numbers</span>
-        <h2 className="h1" style={{ marginTop: 24, maxWidth: '16ch' }}>The state of <span style={{}}>the firm</span>.</h2>
+        <h2 className="h1" style={{ marginTop: 20, maxWidth: '16ch' }}>The state of <span style={{}}>the firm</span>.</h2>
         <div className="numbers-grid">
           <Stat n="2023" label="Founded · Miami, Florida" />
           <Stat n="12" label="Architects & engineers (and growing)" />
@@ -210,7 +214,7 @@ function Numbers() {
         </div>
       </div>
       <style>{`
-        .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 80px; }
+        .numbers-grid { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; margin-top: 56px; }
         @media (max-width: 880px) { .numbers-grid { grid-template-columns: repeat(2, 1fr); gap: 32px; } }
       `}</style>
     </section>
