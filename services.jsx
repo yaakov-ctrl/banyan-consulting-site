@@ -109,8 +109,39 @@ function ServicesDeep() {
         .service-deep-body { display: flex; flex-direction: column; gap: 28px; }
         .service-row-detail { display: grid; grid-template-columns: 160px 1fr; gap: 24px; padding-bottom: 24px; border-bottom: 1px solid var(--glass-line); align-items: start; }
         .service-row-detail:last-child { border-bottom: none; padding-bottom: 0; }
-        @media (max-width: 700px) { .service-row-detail { grid-template-columns: 1fr; gap: 8px; } }
         .service-row-label { font-size: 12px; text-transform: uppercase; letter-spacing: 0.08em; color: var(--bone-300); padding-top: 4px; font-weight: 500; }
+
+        @media (max-width: 700px) {
+          .service-row-detail { grid-template-columns: 1fr; gap: 8px; }
+          .services-deep {
+            gap: 28px;
+            background: transparent;
+            border: none;
+            border-radius: 0;
+            overflow: visible;
+          }
+          .service-deep {
+            border: 1px solid var(--glass-line-strong);
+            border-radius: 14px;
+            padding: 36px 28px 32px;
+            position: relative;
+          }
+          .service-deep::before {
+            content: '';
+            position: absolute;
+            top: -1px;
+            left: 28px;
+            width: 40px;
+            height: 2px;
+            background: var(--moss-400);
+            border-radius: 0 0 2px 2px;
+          }
+          .service-deep-head {
+            padding-bottom: 24px;
+            margin-bottom: 4px;
+            border-bottom: 1px solid var(--glass-line);
+          }
+        }
       `}</style>
     </section>
   );
