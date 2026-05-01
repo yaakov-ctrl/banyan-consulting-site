@@ -311,7 +311,7 @@ function Footer() {
           <span style={{ display: 'inline-flex', gap: 24 }}>
             <a href="#">Privacy</a>
             <a href="#">Terms</a>
-            <a href="#">contact@banyanco.com</a>
+            <a href="mailto:hello@gobanyan.consulting">hello@gobanyan.consulting</a>
             <a href="#">+1 (305) 555-0140</a>
           </span>
         </div>

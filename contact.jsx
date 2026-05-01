@@ -29,14 +29,14 @@ function ContactPage() {
                   <div className="contact-info-row">
                     <div className="mono contact-info-label">Office</div>
                     <div>
-                      <div>1450 Brickell Ave, Suite 1700</div>
-                      <div>Miami, FL 33131</div>
+                      <div>Brickell City Centre</div>
+                      <div>78 SW 7th St, Miami, FL 33130</div>
                     </div>
                   </div>
                   <div className="contact-info-row">
                     <div className="mono contact-info-label">Direct</div>
                     <div>
-                      <div>contact@banyanco.com</div>
+                      <div>hello@gobanyan.consulting</div>
                       <div className="mono" style={{ fontSize: 12, color: 'var(--bone-300)', marginTop: 4 }}>+1 (305) 555-0140</div>
                     </div>
                   </div>
@@ -98,7 +98,7 @@ function ContactPage() {
                       <svg viewBox="0 0 24 24" width="28" height="28" fill="none"><path d="M5 12 L 10 17 L 19 7" stroke="var(--moss-400)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg>
                     </div>
                     <h3 className="" style={{ fontSize: 36, lineHeight: 1.1 }}>Got it.</h3>
-                    <p className="lede" style={{ marginTop: 16, textAlign: 'center', margin: '16px auto 0' }}>An architect will reach out within one business day. Look out for an email from <strong style={{ color: 'var(--bone-100)' }}>contact@banyanco.com</strong>.</p>
+                    <p className="lede" style={{ marginTop: 16, textAlign: 'center', margin: '16px auto 0' }}>An architect will reach out within one business day. Look out for an email from <strong style={{ color: 'var(--bone-100)' }}>hello@gobanyan.consulting</strong>.</p>
                   </div>
                 )}
               </div>
