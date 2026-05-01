@@ -18,40 +18,6 @@ function AboutHero() {
   );
 }
 
-function CustomerSuccessManifesto() {
-  return (
-    <section style={{ padding: '60px 0 120px' }}>
-      <div className="shell">
-        <Reveal>
-          <div className="cs-banner">
-            <div className="cs-banner-meta">
-              <span className="eyebrow">What we actually care about</span>
-              <h2 className="h1" style={{ marginTop: 24, maxWidth: '20ch' }}>
-                <span style={{ color: 'var(--moss-400)' }}>Customer success</span> isn't a department. It's the only thing that matters.
-              </h2>
-            </div>
-            <div className="cs-banner-body">
-              <p className="lede" style={{ maxWidth: '54ch' }}>
-                Most consultancies measure themselves on hours billed, modules deployed, tickets closed. We measure ourselves on one thing: <em>did your operation get better?</em> Did your team adopt the system? Are you using us less six months later than you were at go-live?
-              </p>
-              <p className="lede" style={{ maxWidth: '54ch', marginTop: 20 }}>
-                We've been on the other side. We've sat in your seat — running operations, getting bad ERP rolled out at us, paying for retainer-hostage support, watching consultants disappear after go-live. We know what good feels like because we know exactly what bad feels like.
-              </p>
-              <p className="lede" style={{ maxWidth: '54ch', marginTop: 20, color: 'var(--moss-300)' }}>
-                That's the bar. Not "delivered to spec." Not "on budget." <strong>Did it actually work for your people?</strong>
-              </p>
-            </div>
-          </div>
-        </Reveal>
-      </div>
-      <style>{`
-        .cs-banner { display: grid; grid-template-columns: 1fr 1.4fr; gap: 80px; padding: 60px; background: var(--ink-200); border: 1px solid var(--glass-line); border-radius: 24px; align-items: start; }
-        @media (max-width: 1000px) { .cs-banner { grid-template-columns: 1fr; gap: 40px; padding: 40px; } }
-      `}</style>
-    </section>
-  );
-}
-
 function Manifesto() {
   const beliefs = [
     { n: '01', t: 'Customer success is the metric.', d: "Hours billed, tickets closed, modules deployed — none of that means anything if your operation didn't actually get better. We measure ourselves on adoption, on whether your team owns the system, on whether you need us less six months in than you did at go-live." },
@@ -189,7 +155,6 @@ function AboutPage() {
       <Nav active="about" />
       <main>
         <AboutHero />
-        <CustomerSuccessManifesto />
         <Manifesto />
         <Team />
         <Numbers />
