@@ -18,6 +18,75 @@ function AboutHero() {
   );
 }
 
+function AINative() {
+  const chain = [
+    {
+      n: '01',
+      tag: 'COLLECT',
+      t: 'Operational data, gathered without the workshop circus.',
+      desc: "Our discovery agent ingests SOPs, screen recordings, system exports, interviews, and existing tickets, then builds a structured operational model in days, not months. No 47-page requirements doc that nobody reads.",
+    },
+    {
+      n: '02',
+      tag: 'IDENTIFY GAPS',
+      t: 'Native Odoo, mapped against your reality.',
+      desc: "The model is run against native Odoo capability with confidence scores. We surface exactly where the standard system fits, where it bends, and where it genuinely has to break, before a single line of custom code is written.",
+    },
+    {
+      n: '03',
+      tag: 'CONFIGURE',
+      t: 'Configuration generated from the analysis, not transcribed.',
+      desc: "The validated gap map drives configuration directly: module setup, custom fields, automations, access rights. Nothing gets re-typed between discovery and build, so nothing gets lost.",
+    },
+  ];
+  return (
+    <section style={{ padding: '60px 0 120px' }}>
+      <div className="shell">
+        <Reveal>
+          <div style={{ marginBottom: 56, maxWidth: '64ch' }}>
+            <span className="eyebrow">AI-native stack</span>
+            <h2 className="h1" style={{ marginTop: 24 }}>
+              <span style={{ color: 'var(--moss-400)' }}>Truly AI-native</span>, from first call to go-live.
+            </h2>
+            <p className="lede" style={{ marginTop: 24 }}>
+              Most consultancies bolt AI onto a traditional process: a chatbot here, a summarizer there. We rebuilt the implementation process around our own software, end-to-end. One proprietary stack carries from operational discovery through gap analysis to live configuration, so nothing gets re-typed, lost, or guessed.
+            </p>
+          </div>
+        </Reveal>
+        <div className="ai-rows">
+          {chain.map((step, i) => (
+            <Reveal key={step.n} delay={i * 60}>
+              <div className="ai-row">
+                <div className="ai-n mono">{step.n}</div>
+                <div className="ai-content">
+                  <div className="mono ai-tag">{step.tag}</div>
+                  <div className="ai-title">{step.t}</div>
+                  <div className="ai-desc">{step.desc}</div>
+                </div>
+              </div>
+            </Reveal>
+          ))}
+        </div>
+      </div>
+      <style>{`
+        .ai-rows { border-top: 1px solid var(--glass-line); }
+        .ai-row { display: grid; grid-template-columns: 80px 1fr; gap: 40px; padding: 44px 0; border-bottom: 1px solid var(--glass-line); align-items: start; }
+        .ai-n { font-size: 14px; color: var(--moss-400); letter-spacing: 0.08em; font-weight: 500; padding-top: 6px; }
+        .ai-content { max-width: 84ch; }
+        .ai-tag { font-size: 11px; color: var(--bone-400); letter-spacing: 0.12em; margin-bottom: 12px; }
+        .ai-title { font-family: var(--sans); font-weight: 500; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
+        .ai-desc { color: var(--bone-300); font-size: 16px; line-height: 1.6; max-width: 56ch; }
+        @media (max-width: 700px) {
+          .ai-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
+          .ai-n { padding-top: 0; }
+          .ai-title { font-size: 22px; }
+          .ai-desc { font-size: 15px; }
+        }
+      `}</style>
+    </section>
+  );
+}
+
 function Manifesto() {
   const beliefs = [
     { n: '01', t: 'Customer success is the metric.', d: "Hours billed, tickets closed, modules deployed — none of that means anything if your operation didn't actually get better. We measure ourselves on adoption, on whether your team owns the system, on whether you need us less six months in than you did at go-live." },
@@ -155,6 +224,7 @@ function AboutPage() {
       <Nav active="about" />
       <main>
         <AboutHero />
+        <AINative />
         <Manifesto />
         <Team />
         <Numbers />
