@@ -433,8 +433,6 @@ section {
   /* Tighten brand block so the burger stays reachable */
   .nav-brand { gap: 10px; min-width: 0; flex: 1 1 auto; overflow: hidden; }
   .nav-brand-mark-img { width: 30px !important; height: 30px !important; }
-  /* Hide the CONSULTING subtitle on phones */
-  .nav-brand > span > span:nth-child(2) { display: none; }
   .nav-right { gap: 6px; flex-shrink: 0; }
   /* Solid scrolled background — backdrop-filter is unreliable on mobile */
   .nav { background: var(--nav-bg-mobile, var(--ink-100)); }
