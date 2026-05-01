@@ -114,30 +114,35 @@ function ClientLogos() {
 /* ---------- ACCREDITATION STRIP ---------- */
 function TrustStrip() {
   const items = [
-    { label: 'Odoo Partner', sub: 'In progress' },
-    { label: 'Odoo v18 / v19 Certified', sub: 'Team' },
-    { label: 'SOC 2 Type II', sub: 'Targeting Q3 2026' },
-    { label: 'ISO 27001', sub: 'Targeting 2027' },
-    { label: 'AWS Select Tier', sub: 'Verified' },
-    { label: 'GDPR / CCPA', sub: 'Compliant' },
+    { label: 'Odoo Partner',              sub: 'In progress',         code: 'CRT-01', state: 'progress', short: 'In progress' },
+    { label: 'Odoo v18 / v19 Certified',  sub: 'Team',                code: 'CRT-02', state: 'live',     short: 'Team' },
+    { label: 'SOC 2 Type II',             sub: 'Targeting Q3 2026',   code: 'CRT-03', state: 'future',   short: 'Q3 2026' },
+    { label: 'ISO 27001',                 sub: 'Targeting 2027',      code: 'CRT-04', state: 'future',   short: '2027' },
+    { label: 'AWS Select Tier',           sub: 'Verified',            code: 'CRT-05', state: 'live',     short: 'Verified' },
+    { label: 'GDPR / CCPA',               sub: 'Compliant',           code: 'CRT-06', state: 'live',     short: 'Compliant' },
   ];
   return (
     <section style={{ padding: '60px 0', borderTop: '1px solid var(--glass-line)' }}>
       <div className="shell">
-        <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 28, flexWrap: 'wrap' }}>
+        <div className="trust-head" style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 28, flexWrap: 'wrap' }}>
           <span className="eyebrow eyebrow-bone">Accredited & verified</span>
           <span className="mono" style={{ fontSize: 12, color: 'var(--bone-400)' }}>Transparent about what's in place and what's coming.</span>
         </div>
         <div className="trust-grid">
           {items.map((it, i) => (
-            <div className="trust-item" key={i}>
-              <svg viewBox="0 0 24 24" width="18" height="18" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
+            <div className={`trust-item state-${it.state}`} key={i}>
+              <svg className="trust-shield" viewBox="0 0 24 24" width="18" height="18" fill="none" style={{ flexShrink: 0, marginTop: 2 }}>
                 <path d="M12 2 L 21 6 L 21 12 C 21 17, 17 21, 12 22 C 7 21, 3 17, 3 12 L 3 6 Z" stroke="var(--moss-400)" strokeWidth="1.4" strokeLinejoin="round" />
                 <path d="M8 12 L 11 15 L 16 9" stroke="var(--moss-400)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" />
               </svg>
-              <div>
-                <div style={{ fontWeight: 500, fontSize: 14 }}>{it.label}</div>
-                <div className="mono" style={{ fontSize: 12, color: 'var(--bone-300)', letterSpacing: '0.06em', marginTop: 4 }}>{it.sub}</div>
+              <div className="trust-code mono" aria-hidden="true">{it.code}</div>
+              <div className="trust-body">
+                <div className="trust-label">{it.label}</div>
+                <div className="trust-sub mono">{it.sub}</div>
+              </div>
+              <div className="trust-status mono">
+                <span className="trust-dot" aria-hidden="true"></span>
+                <span className="trust-status-text">{it.short}</span>
               </div>
             </div>
           ))}
@@ -147,8 +152,71 @@ function TrustStrip() {
       <style>{`
         .trust-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px 40px; }
         @media (max-width: 880px) { .trust-grid { grid-template-columns: repeat(2, 1fr); gap: 28px 32px; } }
-        @media (max-width: 600px) { .trust-grid { grid-template-columns: 1fr; gap: 22px; } }
         .trust-item { display: flex; gap: 12px; align-items: flex-start; }
+        .trust-item .trust-label { font-weight: 500; font-size: 14px; }
+        .trust-item .trust-sub { font-size: 12px; color: var(--bone-300); letter-spacing: 0.06em; margin-top: 4px; }
+        .trust-code, .trust-status { display: none; }
+
+        @media (max-width: 600px) {
+          .trust-head { margin-bottom: 18px !important; }
+          .trust-grid {
+            display: flex;
+            flex-direction: column;
+            gap: 0;
+            grid-template-columns: none;
+            border-top: 1px solid var(--glass-line);
+          }
+          .trust-item {
+            display: grid;
+            grid-template-columns: 56px 1fr auto;
+            align-items: center;
+            gap: 14px;
+            padding: 16px 0;
+            border-bottom: 1px solid var(--glass-line);
+          }
+          .trust-item .trust-shield,
+          .trust-item .trust-sub { display: none; }
+          .trust-code {
+            display: block;
+            font-size: 11px;
+            color: var(--bone-400);
+            letter-spacing: 0.08em;
+            font-weight: 500;
+          }
+          .trust-body { min-width: 0; }
+          .trust-item .trust-label {
+            font-size: 15px;
+            line-height: 1.25;
+            letter-spacing: -0.01em;
+          }
+          .trust-status {
+            display: inline-flex;
+            align-items: center;
+            gap: 8px;
+            font-size: 11px;
+            letter-spacing: 0.08em;
+            text-transform: uppercase;
+            color: var(--bone-300);
+            white-space: nowrap;
+          }
+          .trust-dot {
+            width: 7px;
+            height: 7px;
+            border-radius: 50%;
+            border: 1px solid var(--moss-400);
+            background: transparent;
+            flex-shrink: 0;
+          }
+          .state-live .trust-dot { background: var(--moss-400); }
+          .state-progress .trust-dot {
+            background: linear-gradient(90deg, var(--moss-400) 50%, transparent 50%);
+          }
+          .state-live { order: 1; }
+          .state-progress { order: 2; }
+          .state-future { order: 3; }
+          .state-future .trust-status,
+          .state-future .trust-code { color: var(--bone-400); }
+        }
       `}</style>
     </section>
   );
