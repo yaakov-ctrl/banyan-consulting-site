@@ -1,7 +1,7 @@
 /* ============================================================
    Banyan Home — simplified
    Hero · Stats · Logos · Trust · Services · Industries
-   · Case studies · Methodology · CTA
+   · Case studies · Client stories · Methodology · CTA
    ============================================================ */
 
 const { useState: useStateH, useEffect: useEffectH } = React;
@@ -408,6 +408,128 @@ function CaseStudies() {
   );
 }
 
+/* ---------- CLIENT STORIES ---------- */
+function ClientStories() {
+  const stories = [
+    {
+      quote: "Banyan Consulting transformed our operations. We went from three disconnected systems to a single Odoo platform in under four months. Our team actually enjoys using it now.",
+      initials: "MR",
+      name: "Michael Ramirez",
+      role: "COO — Coastal Distribution Co., Miami",
+    },
+    {
+      quote: "The team's depth of Odoo knowledge is unmatched in Florida. They didn't just implement software — they re-engineered our workflows. We cut our order-to-ship time by 38%.",
+      initials: "SL",
+      name: "Sarah Lindqvist",
+      role: "VP Operations — SunState Manufacturing, Tampa",
+    },
+    {
+      quote: "We migrated from NetSuite to Odoo with Banyan handling everything. Zero data loss, minimal downtime, and a system that fits us perfectly. Best technology decision we've made.",
+      initials: "JT",
+      name: "James Thornton",
+      role: "CEO — Pinnacle Health Group, Orlando",
+    },
+  ];
+  return (
+    <section style={{ padding: '120px 0', borderTop: '1px solid var(--glass-line)' }}>
+      <div className="shell">
+        <div className="stories-head">
+          <div>
+            <span className="eyebrow">Trusted by operators who can't afford guesswork</span>
+            <h2 className="h1" style={{ marginTop: 24, maxWidth: '20ch' }}>
+              Client stories.
+            </h2>
+          </div>
+          <p className="lede" style={{ maxWidth: '38ch', color: 'var(--bone-300)' }}>
+            Real words from leaders running the businesses behind the metrics. No anonymized blurbs, no marketing edit.
+          </p>
+        </div>
+
+        <div className="story-grid">
+          {stories.map((s, i) => (
+            <article key={i} className="story-card">
+              <span className="story-mark" aria-hidden="true">&ldquo;</span>
+              <p className="story-quote">{s.quote}</p>
+              <footer className="story-foot">
+                <div className="story-avatar" aria-hidden="true">{s.initials}</div>
+                <div className="story-meta">
+                  <div className="story-name">{s.name}</div>
+                  <div className="story-role mono">{s.role}</div>
+                </div>
+              </footer>
+            </article>
+          ))}
+        </div>
+      </div>
+
+      <style>{`
+        .stories-head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: end; margin-bottom: 60px; }
+        @media (max-width: 880px) { .stories-head { grid-template-columns: 1fr; gap: 24px; } }
+        .story-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; }
+        @media (max-width: 1000px) { .story-grid { grid-template-columns: 1fr; } }
+        .story-card {
+          position: relative;
+          background: var(--ink-200);
+          border: 1px solid var(--glass-line-strong);
+          padding: 40px 36px 32px;
+          display: flex;
+          flex-direction: column;
+          transition: background 0.18s ease, border-color 0.18s ease;
+        }
+        .story-card:hover { background: var(--ink-300); }
+        .story-mark {
+          position: absolute;
+          top: 8px;
+          right: 28px;
+          font-family: var(--sans);
+          font-weight: 500;
+          font-size: 120px;
+          line-height: 1;
+          color: var(--moss-400);
+          opacity: 0.16;
+          user-select: none;
+          pointer-events: none;
+        }
+        .story-quote {
+          font-family: var(--sans);
+          font-size: 16px;
+          line-height: 1.6;
+          color: var(--bone-100);
+          flex: 1;
+          letter-spacing: -0.005em;
+          margin: 0;
+        }
+        .story-foot {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+          margin-top: 32px;
+          padding-top: 24px;
+          border-top: 1px solid var(--glass-line);
+        }
+        .story-avatar {
+          width: 44px;
+          height: 44px;
+          border-radius: 50%;
+          background: var(--moss-400);
+          color: #FAF7F0;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          font-family: var(--mono);
+          font-weight: 500;
+          font-size: 13px;
+          letter-spacing: 0.04em;
+          flex-shrink: 0;
+        }
+        .story-meta { min-width: 0; }
+        .story-name { font-family: var(--sans); font-size: 14px; font-weight: 500; color: var(--bone-100); }
+        .story-role { font-size: 11px; color: var(--bone-300); margin-top: 4px; letter-spacing: 0.04em; line-height: 1.4; }
+      `}</style>
+    </section>
+  );
+}
+
 /* ---------- METHODOLOGY ---------- */
 function Methodology() {
   const steps = [
@@ -489,6 +611,7 @@ function Home() {
         <ServicesSummary />
         <IndustriesGrid />
         <CaseStudies />
+        <ClientStories />
         <Methodology />
         <CTA />
       </main>
