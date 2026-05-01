@@ -19,12 +19,8 @@ function Hero() {
         </div>
 
         <h1 className="h-display hero-title">
-          <span style={{ display: 'inline-flex', alignItems: 'center', gap: '0.25em', flexWrap: 'wrap' }}>
-            <span>The first AI-native</span>
-            <OdooLogo />
-            <span>firm.</span>
-          </span><br/>
-          <span style={{ color: 'var(--bone-300)' }}>Implementation, the easy part.</span>
+          <span className="hero-line">The first AI&#8209;native <OdooLogo /> firm.</span>
+          <span className="hero-line hero-line-muted">Implementation, the easy part.</span>
         </h1>
 
         <div className="hero-grid">
@@ -42,7 +38,9 @@ function Hero() {
         .hero { padding: 180px 0 120px; position: relative; }
         .hero-inner { display: flex; flex-direction: column; gap: 56px; }
         .hero-meta { display: flex; justify-content: space-between; align-items: center; padding-bottom: 32px; flex-wrap: wrap; gap: 16px; }
-        .hero-title { max-width: 22ch; }
+        .hero-title { font-size: clamp(40px, 5.5vw, 76px); line-height: 1.05; max-width: none; }
+        .hero-line { display: block; }
+        .hero-line-muted { color: var(--bone-300); }
         .hero-grid { display: grid; grid-template-columns: 1.2fr 1fr; gap: 60px; align-items: end; padding-top: 8px; }
         .hero-actions { display: flex; gap: 14px; flex-wrap: wrap; justify-content: flex-end; }
         @media (max-width: 900px) {
