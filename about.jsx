@@ -40,16 +40,16 @@ function AINative() {
     },
   ];
   return (
-    <section style={{ padding: '32px 0 72px' }}>
+    <section style={{ padding: '96px 0', background: 'var(--ink-200)', borderTop: '1px solid var(--glass-line)', borderBottom: '1px solid var(--glass-line)' }}>
       <div className="shell">
         <Reveal>
-          <div style={{ marginBottom: 40, maxWidth: '64ch' }}>
-            <span className="eyebrow">AI-native stack</span>
+          <div style={{ marginBottom: 48, maxWidth: '60ch' }}>
+            <span className="eyebrow">The implementation chain</span>
             <h2 className="h1" style={{ marginTop: 20 }}>
-              <span style={{ color: 'var(--moss-400)' }}>Truly AI-native</span>, from first call to go-live.
+              One stack. <span style={{ color: 'var(--moss-400)' }}>Discovery to configuration.</span>
             </h2>
             <p className="lede" style={{ marginTop: 20 }}>
-              Most consultancies bolt AI onto a traditional process: a chatbot here, a summarizer there. We rebuilt the implementation process around our own software, end-to-end. One proprietary stack carries from operational discovery through gap analysis to live configuration, so nothing gets re-typed, lost, or guessed.
+              Other firms bolt AI onto a manual process. We built ours into the work itself — discovery, gap analysis, and configuration on one proprietary stack. Nothing gets re-typed between phases.
             </p>
           </div>
         </Reveal>
