@@ -1,7 +1,7 @@
 /* ============================================================
    Banyan Home — simplified
-   Hero · Stats · Logos · Trust · Services · Industries
-   · Case studies · Client stories · Methodology · CTA
+   Hero · Stats · Logos · Trust · Why Odoo · Services
+   · Industries · Case studies · Client stories · Methodology · CTA
    ============================================================ */
 
 const { useState: useStateH, useEffect: useEffectH } = React;
@@ -216,6 +216,103 @@ function TrustStrip() {
           .state-future .trust-status,
           .state-future .trust-code { color: var(--bone-400); }
         }
+      `}</style>
+    </section>
+  );
+}
+
+/* ---------- WHY ODOO ---------- */
+function WhyOdoo() {
+  const pillars = [
+    {
+      n: '01',
+      tag: 'Modular',
+      t: 'Fully integrated suite',
+      d: "No data silos. All 80+ apps share a single data model — eliminating manual syncing between disconnected tools.",
+    },
+    {
+      n: '02',
+      tag: 'Affordable',
+      t: 'Enterprise-grade, SMB-friendly',
+      d: 'Powerful enough for Fortune 500 workflows. Affordable enough to deploy at mid-market speed and cost.',
+    },
+    {
+      n: '03',
+      tag: 'Customizable',
+      t: 'Open & extensible',
+      d: 'Custom modules, APIs, and integrations — Odoo adapts to your workflows, not the other way around.',
+    },
+  ];
+  const stats = [
+    { n: '12M+', l: 'users worldwide' },
+    { n: '80+',  l: 'integrated apps' },
+    { n: '150+', l: 'countries' },
+    { n: '40%',  l: 'avg cost savings' },
+  ];
+  return (
+    <section style={{ padding: '120px 0', borderTop: '1px solid var(--glass-line)', background: 'var(--ink-200)' }}>
+      <div className="shell">
+        <div className="why-head">
+          <div>
+            <span className="eyebrow">Why Odoo</span>
+            <h2 className="h1" style={{ marginTop: 24, maxWidth: '18ch' }}>
+              One platform. Every business process.
+            </h2>
+          </div>
+          <p className="lede" style={{ maxWidth: '46ch', color: 'var(--bone-200)' }}>
+            <OdooLogo /> is the world's most installed open-source ERP — 80+ integrated apps spanning CRM, accounting, inventory, manufacturing, HR, and the long tail in between.
+          </p>
+        </div>
+
+        <div className="why-grid">
+          {pillars.map((p) => (
+            <div key={p.n} className="why-card">
+              <div className="why-card-head">
+                <span className="why-n mono">{p.n}</span>
+                <span className="why-tag mono">{p.tag}</span>
+              </div>
+              <h3 className="why-t">{p.t}</h3>
+              <p className="why-d">{p.d}</p>
+            </div>
+          ))}
+        </div>
+
+        <div className="why-stats-wrap">
+          <div className="why-stats">
+            {stats.map((s, i) => (
+              <div className="why-stat" key={i}>
+                <div className="why-stat-n">{s.n}</div>
+                <div className="why-stat-l mono">{s.l}</div>
+              </div>
+            ))}
+          </div>
+        </div>
+
+        <div className="why-foot mono">
+          Banyan Consulting — Odoo experts certified across every module.
+        </div>
+      </div>
+
+      <style>{`
+        .why-head { display: grid; grid-template-columns: 1.4fr 1fr; gap: 60px; align-items: end; margin-bottom: 60px; }
+        @media (max-width: 880px) { .why-head { grid-template-columns: 1fr; gap: 24px; } }
+
+        .why-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 1px; background: var(--glass-line-strong); border: 1px solid var(--glass-line-strong); margin-bottom: 64px; }
+        @media (max-width: 1000px) { .why-grid { grid-template-columns: 1fr; } }
+        .why-card { background: var(--ink-100); padding: 36px; display: flex; flex-direction: column; gap: 18px; min-height: 260px; }
+        .why-card-head { display: flex; justify-content: space-between; align-items: center; }
+        .why-n { font-size: 12px; color: var(--bone-300); letter-spacing: 0.08em; font-weight: 500; }
+        .why-tag { font-size: 11px; color: var(--moss-400); letter-spacing: 0.14em; font-weight: 500; text-transform: uppercase; }
+        .why-t { font-family: var(--sans); font-weight: 500; font-size: clamp(20px, 1.7vw, 24px); line-height: 1.2; letter-spacing: -0.02em; color: var(--bone-100); }
+        .why-d { font-size: 14px; line-height: 1.6; color: var(--bone-300); margin: 0; }
+
+        .why-stats-wrap { padding: 40px 0; border-top: 1px solid var(--glass-line-strong); border-bottom: 1px solid var(--glass-line-strong); }
+        .why-stats { display: grid; grid-template-columns: repeat(4, 1fr); gap: 32px; }
+        @media (max-width: 700px) { .why-stats { grid-template-columns: repeat(2, 1fr); gap: 28px 24px; } }
+        .why-stat-n { font-family: var(--sans); font-weight: 500; font-size: clamp(36px, 4vw, 56px); line-height: 1; color: var(--moss-400); letter-spacing: -0.03em; }
+        .why-stat-l { font-size: 11px; color: var(--bone-300); margin-top: 12px; letter-spacing: 0.1em; text-transform: uppercase; }
+
+        .why-foot { margin-top: 40px; font-size: 12px; color: var(--bone-300); letter-spacing: 0.08em; text-align: center; }
       `}</style>
     </section>
   );
@@ -608,6 +705,7 @@ function Home() {
         <StatsRow />
         <ClientLogos />
         <TrustStrip />
+        <WhyOdoo />
         <ServicesSummary />
         <IndustriesGrid />
         <CaseStudies />
