@@ -23,20 +23,20 @@ function AINative() {
     {
       n: '01',
       tag: 'COLLECT',
-      t: 'Operational data, gathered without the workshop circus.',
-      desc: "Our discovery agent ingests SOPs, screen recordings, system exports, interviews, and existing tickets, then builds a structured operational model in days, not months. No 47-page requirements doc that nobody reads.",
+      t: 'Operational data, without the workshop circus.',
+      desc: "Our discovery agent ingests SOPs, screen recordings, system exports, interviews, and existing tickets, then builds a structured operational model in days, not months.",
     },
     {
       n: '02',
       tag: 'IDENTIFY GAPS',
       t: 'Native Odoo, mapped against your reality.',
-      desc: "The model is run against native Odoo capability with confidence scores. We surface exactly where the standard system fits, where it bends, and where it genuinely has to break, before a single line of custom code is written.",
+      desc: "The model is run against native Odoo capability with confidence scores. We surface exactly where the standard system fits, where it bends, and where it has to break, before a single line of custom code is written.",
     },
     {
       n: '03',
       tag: 'CONFIGURE',
-      t: 'Configuration generated from the analysis, not transcribed.',
-      desc: "The validated gap map drives configuration directly: module setup, custom fields, automations, access rights. Nothing gets re-typed between discovery and build, so nothing gets lost.",
+      t: 'Configuration generated, not transcribed.',
+      desc: "The validated gap map drives configuration directly: module setup, custom fields, automations, access rights. Nothing gets re-typed between discovery and build.",
     },
   ];
   return (
@@ -45,43 +45,59 @@ function AINative() {
         <Reveal>
           <div style={{ marginBottom: 40, maxWidth: '64ch' }}>
             <span className="eyebrow">AI-native stack</span>
-            <h2 className="h1" style={{ marginTop: 24 }}>
+            <h2 className="h1" style={{ marginTop: 20 }}>
               <span style={{ color: 'var(--moss-400)' }}>Truly AI-native</span>, from first call to go-live.
             </h2>
-            <p className="lede" style={{ marginTop: 24 }}>
+            <p className="lede" style={{ marginTop: 20 }}>
               Most consultancies bolt AI onto a traditional process: a chatbot here, a summarizer there. We rebuilt the implementation process around our own software, end-to-end. One proprietary stack carries from operational discovery through gap analysis to live configuration, so nothing gets re-typed, lost, or guessed.
             </p>
           </div>
         </Reveal>
-        <div className="ai-rows">
+        <div className="ai-flow">
           {chain.map((step, i) => (
             <Reveal key={step.n} delay={i * 60}>
-              <div className="ai-row">
-                <div className="ai-n mono">{step.n}</div>
-                <div className="ai-content">
-                  <div className="mono ai-tag">{step.tag}</div>
-                  <div className="ai-title">{step.t}</div>
-                  <div className="ai-desc">{step.desc}</div>
+              <div className="ai-flow-card">
+                <div className="ai-flow-meta">
+                  <span className="mono ai-flow-tag">{step.tag}</span>
+                  <span className="mono ai-flow-n">{step.n}</span>
                 </div>
+                <div className="ai-flow-title">{step.t}</div>
+                <div className="ai-flow-desc">{step.desc}</div>
               </div>
             </Reveal>
           ))}
         </div>
       </div>
       <style>{`
-        .ai-rows { border-top: 1px solid var(--glass-line); }
-        .ai-row { display: grid; grid-template-columns: 80px 1fr; gap: 40px; padding: 44px 0; border-bottom: 1px solid var(--glass-line); align-items: start; }
-        .ai-n { font-size: 14px; color: var(--moss-400); letter-spacing: 0.08em; font-weight: 500; padding-top: 6px; }
-        .ai-content { max-width: 84ch; }
-        .ai-tag { font-size: 11px; color: var(--bone-400); letter-spacing: 0.12em; margin-bottom: 12px; }
-        .ai-title { font-family: var(--sans); font-weight: 500; font-size: clamp(24px, 2.6vw, 36px); line-height: 1.15; letter-spacing: -0.02em; margin-bottom: 14px; }
-        .ai-desc { color: var(--bone-300); font-size: 16px; line-height: 1.6; max-width: 56ch; }
-        @media (max-width: 700px) {
-          .ai-row { grid-template-columns: 1fr; gap: 10px; padding: 28px 0; }
-          .ai-n { padding-top: 0; }
-          .ai-title { font-size: 22px; }
-          .ai-desc { font-size: 15px; }
+        .ai-flow { display: grid; grid-template-columns: repeat(3, 1fr); gap: 16px; }
+        .ai-flow > .reveal { display: flex; }
+        .ai-flow > .reveal > .ai-flow-card { flex: 1; }
+        .ai-flow-card {
+          position: relative;
+          background: var(--ink-100);
+          border: 1px solid var(--glass-line-strong);
+          border-radius: 14px;
+          padding: 28px;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
         }
+        .ai-flow-card::before {
+          content: '';
+          position: absolute;
+          top: -1px;
+          left: 28px;
+          width: 36px;
+          height: 2px;
+          background: var(--moss-400);
+          border-radius: 0 0 2px 2px;
+        }
+        .ai-flow-meta { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; padding-top: 6px; }
+        .ai-flow-tag { font-size: 11px; color: var(--bone-400); letter-spacing: 0.12em; }
+        .ai-flow-n { font-size: 13px; color: var(--moss-400); letter-spacing: 0.04em; font-weight: 500; }
+        .ai-flow-title { font-family: var(--sans); font-weight: 500; font-size: clamp(20px, 1.5vw, 22px); line-height: 1.2; letter-spacing: -0.02em; }
+        .ai-flow-desc { font-size: 14px; color: var(--bone-300); line-height: 1.6; }
+        @media (max-width: 1000px) { .ai-flow { grid-template-columns: 1fr; gap: 16px; } }
       `}</style>
     </section>
   );
