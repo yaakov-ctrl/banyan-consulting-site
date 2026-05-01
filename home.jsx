@@ -12,7 +12,7 @@ function Hero() {
     <section className="hero">
       <div className="shell hero-inner">
         <div className="hero-meta">
-          <span className="eyebrow">Florida · Odoo specialists · AI-native</span>
+          <span className="eyebrow">Odoo specialists · AI-native</span>
           <span className="mono" style={{ fontSize: 12, color: 'var(--bone-300)', letterSpacing: '0.10em' }}>
             EST. 2023 / MIAMI, FL
           </span>
