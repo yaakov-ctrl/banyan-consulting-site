@@ -85,26 +85,90 @@ function StatsRow() {
 
 /* ---------- CLIENT LOGOS (static grid) ---------- */
 function ClientLogos() {
-  const logos = ['ATLANTIC BAY', 'CORAL SHORE', 'CASA VERDE', 'MERIDIAN HEALTH', 'PALMETTO REALTY', 'SUNSET LOGISTICS', 'CALOOSA INDUSTRIES', 'GULFSTREAM EQ.'];
-  const list = [...logos, ...logos];
+  const clients = [
+    { name: 'La Pimenterie',          src: 'logos/la-pimenterie.jpg',          scale: 1 },
+    { name: 'Dépôt Chasse & Pêche',   src: 'logos/depot-chasse-peche.png',     scale: 0.95 },
+    { name: 'Venue Industries',       src: 'logos/venue-industries.png',       scale: 1 },
+    { name: 'Techlift International', src: 'logos/techlift-international.jpg', scale: 0.78 },
+    { name: 'Green Brothers',         src: 'logos/green-brothers.avif',        scale: 0.72 },
+    { name: 'Vecto',                  src: 'logos/vecto.avif',                 scale: 0.95, dark: true },
+  ];
   return (
-    <section style={{ padding: '60px 0', borderTop: '1px solid var(--glass-line)' }}>
-      <div className="shell" style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', flexWrap: 'wrap', gap: 16, marginBottom: 32 }}>
-        <span className="eyebrow eyebrow-bone">Trusted by Florida operators</span>
+    <section className="trusted">
+      <div className="shell trusted-head">
+        <span className="eyebrow eyebrow-bone">Trusted by top operators</span>
         <span className="mono" style={{ fontSize: 12, color: 'var(--bone-400)' }}>Selected clients · 2024–2026</span>
       </div>
-      <div className="logo-marquee">
-        <div className="logo-marquee-track">
-          {list.map((l, i) => (
-            <span key={i} className="logo-pill">{l}</span>
+      <div className="shell">
+        <div className="client-logo-grid">
+          {clients.map((c, i) => (
+            <div
+              key={i}
+              className={`client-logo-cell${c.dark ? ' client-logo-cell--dark' : ''}`}
+              title={c.name}
+            >
+              <img
+                src={c.src}
+                alt={c.name}
+                style={{ transform: `scale(${c.scale})` }}
+                loading="lazy"
+              />
+            </div>
           ))}
         </div>
       </div>
       <style>{`
-        .logo-marquee { overflow: hidden; white-space: nowrap; display: flex; padding: 28px 0; }
-        .logo-marquee-track { display: inline-flex; align-items: center; gap: 64px; flex-shrink: 0; padding-right: 64px; animation: logo-scroll 45s linear infinite; }
-        .logo-pill { font-family: var(--sans); font-weight: 500; font-size: 18px; letter-spacing: 0.06em; color: var(--bone-300); }
-        @keyframes logo-scroll { from { transform: translateX(0); } to { transform: translateX(-50%); } }
+        .trusted { padding: 60px 0; border-top: 1px solid var(--glass-line); border-bottom: 1px solid var(--glass-line); }
+        .trusted-head { display: flex; justify-content: space-between; align-items: center; flex-wrap: wrap; gap: 16px; margin-bottom: 40px; }
+
+        .client-logo-grid {
+          display: grid;
+          grid-template-columns: repeat(6, 1fr);
+          gap: 0;
+          border-top: 1px solid var(--glass-line);
+          border-left: 1px solid var(--glass-line);
+        }
+        .client-logo-cell {
+          height: 120px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          padding: 22px 28px;
+          border-right: 1px solid var(--glass-line);
+          border-bottom: 1px solid var(--glass-line);
+          overflow: hidden;
+          transition: background 0.25s ease;
+        }
+        .client-logo-cell:hover { background: var(--glass-fill); }
+        .client-logo-cell img {
+          max-width: 100%;
+          max-height: 100%;
+          width: auto;
+          height: auto;
+          object-fit: contain;
+          filter: grayscale(1) opacity(0.75);
+          transition: filter 0.3s ease, transform 0.3s ease;
+        }
+        .client-logo-cell:hover img { filter: grayscale(0) opacity(1); }
+
+        /* Dark inverse cell (used for white-on-dark logos on light theme) */
+        [data-theme="light"] .client-logo-cell--dark { background: #14110B; }
+        [data-theme="light"] .client-logo-cell--dark img { filter: opacity(0.85); }
+        [data-theme="light"] .client-logo-cell--dark:hover { background: #14110B; }
+        [data-theme="light"] .client-logo-cell--dark:hover img { filter: opacity(1); }
+
+        /* In dark mode the page is already dark — let the white logo sit naturally */
+        [data-theme="dark"] .client-logo-cell--dark img { filter: opacity(0.85); }
+        [data-theme="dark"] .client-logo-cell--dark:hover img { filter: opacity(1); }
+
+        @media (max-width: 900px) {
+          .client-logo-grid { grid-template-columns: repeat(3, 1fr); }
+          .client-logo-cell { height: 100px; padding: 18px 20px; }
+        }
+        @media (max-width: 480px) {
+          .client-logo-grid { grid-template-columns: repeat(2, 1fr); }
+          .client-logo-cell { height: 90px; padding: 16px; }
+        }
       `}</style>
     </section>
   );
