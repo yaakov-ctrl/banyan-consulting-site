@@ -177,10 +177,10 @@ function ClientLogos() {
 /* ---------- ACCREDITATION STRIP ---------- */
 function TrustStrip() {
   const items = [
-    { label: 'Odoo Partner',              sub: 'In progress',         code: 'CRT-01', state: 'progress', short: 'In progress' },
+    { label: 'Odoo Experts',              sub: 'Verified',            code: 'CRT-01', state: 'live',     short: 'Verified' },
     { label: 'Odoo v18 / v19 Certified',  sub: 'Team',                code: 'CRT-02', state: 'live',     short: 'Team' },
-    { label: 'SOC 2 Type II',             sub: 'Targeting Q3 2026',   code: 'CRT-03', state: 'future',   short: 'Q3 2026' },
-    { label: 'ISO 27001',                 sub: 'Targeting 2027',      code: 'CRT-04', state: 'future',   short: '2027' },
+    { label: 'SOC 2 Type II',             sub: 'Inherited via Odoo',  code: 'CRT-03', state: 'live',     short: 'Via Odoo' },
+    { label: 'ISO 27001',                 sub: 'Inherited via Odoo',  code: 'CRT-04', state: 'live',     short: 'Via Odoo' },
     { label: 'AWS Select Tier',           sub: 'Verified',            code: 'CRT-05', state: 'live',     short: 'Verified' },
     { label: 'GDPR / CCPA',               sub: 'Compliant',           code: 'CRT-06', state: 'live',     short: 'Compliant' },
   ];
@@ -189,7 +189,7 @@ function TrustStrip() {
       <div className="shell">
         <div className="trust-head" style={{ display: 'flex', alignItems: 'center', gap: 24, marginBottom: 28, flexWrap: 'wrap' }}>
           <span className="eyebrow eyebrow-bone">Accredited & verified</span>
-          <span className="mono" style={{ fontSize: 12, color: 'var(--bone-400)' }}>Transparent about what's in place and what's coming.</span>
+          <span className="mono" style={{ fontSize: 12, color: 'var(--bone-400)' }}>Every credential below is in place today.</span>
         </div>
         <div className="trust-grid">
           {items.map((it, i) => (
