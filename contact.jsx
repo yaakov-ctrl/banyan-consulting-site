@@ -1,13 +1,52 @@
 /* Contact page */
 const { useState: useStateC, useEffect: useEffectC } = React;
 
+const WEB3FORMS_KEY = '93426a60-8552-4922-a45b-97ddfaaec523';
+
 function ContactPage() {
   const [form, setForm] = useStateC({ name: '', email: '', company: '', size: '', industry: '', stage: '', notes: '' });
   const [sent, setSent] = useStateC(false);
+  const [submitting, setSubmitting] = useStateC(false);
+  const [error, setError] = useStateC('');
   useEffectC(() => { if (window.applyAccent && window.BANYAN_TWEAK_DEFAULTS) window.applyAccent(window.BANYAN_TWEAK_DEFAULTS.accent); }, []);
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
-  const submit = (e) => { e.preventDefault(); setSent(true); };
+  const submit = async (e) => {
+    e.preventDefault();
+    if (submitting) return;
+    setSubmitting(true);
+    setError('');
+    try {
+      const payload = {
+        access_key: WEB3FORMS_KEY,
+        subject: `New diagnostic request from ${form.name || 'unknown'}${form.company ? ` (${form.company})` : ''}`,
+        from_name: 'Banyan Website',
+        name: form.name,
+        email: form.email,
+        company: form.company,
+        team_size: form.size,
+        industry: form.industry,
+        where_are_you: form.stage,
+        message: form.notes,
+        botcheck: '',
+      };
+      const res = await fetch('https://api.web3forms.com/submit', {
+        method: 'POST',
+        headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+        body: JSON.stringify(payload),
+      });
+      const data = await res.json().catch(() => ({}));
+      if (res.ok && data.success) {
+        setSent(true);
+      } else {
+        setError(data.message || 'Something went wrong. Please email hello@gobanyan.consulting directly.');
+      }
+    } catch (err) {
+      setError('Network error. Please email hello@gobanyan.consulting directly.');
+    } finally {
+      setSubmitting(false);
+    }
+  };
 
   return (
     <>
@@ -82,9 +121,14 @@ function ContactPage() {
                       <span style={{ fontSize: 13, color: 'var(--bone-300)' }}>I consent to Banyan storing this submission to prepare for the diagnostic. We don't share, sell, or spam. Read our <a href="#" style={{ color: 'var(--moss-400)' }}>privacy policy</a>.</span>
                     </div>
 
-                    <button type="submit" className="btn btn-primary" style={{ width: '100%', justifyContent: 'space-between', padding: '18px 24px', fontSize: 15 }}>
-                      Request my diagnostic <span className="btn-arrow">→</span>
+                    <button type="submit" disabled={submitting} className="btn btn-primary" style={{ width: '100%', justifyContent: 'space-between', padding: '18px 24px', fontSize: 15, opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}>
+                      {submitting ? 'Sending…' : 'Request my diagnostic'} <span className="btn-arrow">→</span>
                     </button>
+                    {error && (
+                      <div style={{ fontSize: 13, color: '#E89A9A', padding: '10px 14px', background: 'rgba(232, 154, 154, 0.08)', border: '1px solid rgba(232, 154, 154, 0.25)', borderRadius: 8 }}>
+                        {error}
+                      </div>
+                    )}
 
                     <div className="contact-trust">
                       <div className="contact-trust-item"><svg viewBox="0 0 24 24" width="14" height="14" fill="none"><circle cx="12" cy="12" r="10" stroke="var(--moss-400)" strokeWidth="1.4"/><path d="M8 12 L 11 15 L 16 9" stroke="var(--moss-400)" strokeWidth="1.6" strokeLinecap="round"/></svg><span>Replies within 1 business day</span></div>
