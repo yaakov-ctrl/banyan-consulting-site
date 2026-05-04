@@ -265,8 +265,8 @@ function Footer() {
               We bring AI to ERP implementation so deployment becomes the easiest part of your transformation.
             </p>
             <div style={{ display: 'flex', gap: 10, marginTop: 24 }}>
-              <a href="#" style={badgeStyle}>Odoo Partner</a>
-              <a href="#" style={badgeStyle}>v18 Certified</a>
+              <a href="#" style={badgeStyle}>Odoo Experts</a>
+              <a href="#" style={badgeStyle}>v18 / v19 Certified</a>
             </div>
           </div>
 
