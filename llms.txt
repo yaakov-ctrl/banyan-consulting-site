@@ -1,0 +1,35 @@
+# Banyan Consulting
+
+> The AI-native Odoo consulting firm. Banyan pairs senior US-based architects with proprietary AI to make ERP implementation the easy part of digital transformation. Headquartered in Miami, Florida; serving mid-market companies across the United States.
+
+Banyan focuses exclusively on Odoo (versions 18 and 19) and works across manufacturing, construction, professional services, retail and e-commerce, healthcare, real estate, and non-profit verticals.
+
+## Core pages
+- [Home](https://gobanyan.consulting/): overview of the firm and methodology
+- [About](https://gobanyan.consulting/about.html): team, AI-native stack, manifesto
+- [Services](https://gobanyan.consulting/services.html): first implementation, project recovery, strategic consulting, support and training
+- [Industries](https://gobanyan.consulting/industries.html): sectors served
+- [Pricing](https://gobanyan.consulting/pricing.html): engagement models
+- [Contact](https://gobanyan.consulting/contact.html): free 45-minute architect diagnostic
+- [FAQ](https://gobanyan.consulting/faq.html): common questions about Odoo and Banyan
+
+## Key facts
+- Specialization: Odoo ERP (v18 / v19), end-to-end implementation
+- Location: Miami, Florida (Brickell City Centre, 78 SW 7th St, Miami, FL 33130)
+- Delivery: US-based senior architects only, no offshore handoffs
+- Languages: English, Spanish
+- Average implementation: 48 hours from kickoff to live sandbox; 4 months end-to-end
+- First-pass migration accuracy: 92%
+- Proprietary AI toolkit accelerates configuration by ~40% versus traditional VARs
+- Free 45-minute diagnostic with a senior architect (no salesperson)
+
+## Differentiators
+- AI-native: proprietary tooling for discovery, requirements, gap analysis, gap resolution, and configuration in one continuous process
+- Senior architects only: no junior handoffs, no offshore delivery
+- Native-first builds: custom code only when standard modules genuinely cannot fit
+- Quarterly health checks driven by AI configuration audits
+
+## Contact
+- Email: hello@gobanyan.consulting
+- Phone: +1 (305) 555-0140
+- Hours: Monday to Friday, 8am to 7pm Eastern
