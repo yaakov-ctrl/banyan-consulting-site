@@ -573,19 +573,29 @@ function CaseStudies() {
 function ClientStories() {
   const stories = [
     {
-      quote: "Banyan Consulting transformed our operations. We went from three disconnected systems to a single Odoo platform in under four months. Our team actually enjoys using it now.",
-      initials: "MR",
-      name: "Michael Ramirez",
-      role: "COO — Coastal Distribution Co., Miami",
+      quote: [
+        "Before working with Banyan, our production processes were pretty manual and getting harder to manage as we grew. They helped us centralize everything into one system, which made a huge difference in how we run day-to-day operations.",
+        "We've cut down on errors, improved traceability, and gained much better visibility across production. The biggest value was how well they understood our needs and built something practical for our team, not just a generic system.",
+        "It's been a game changer for us.",
+      ],
+      initials: "FP",
+      name: "FX Potier",
+      role: "Director of Operations — La Pimenterie",
     },
     {
-      quote: "The team's depth of Odoo knowledge is unmatched in Florida. They didn't just implement software — they re-engineered our workflows. We cut our order-to-ship time by 38%.",
-      initials: "SL",
-      name: "Sarah Lindqvist",
-      role: "VP Operations — SunState Manufacturing, Tampa",
+      quote: [
+        "Working with Banyan to implement Odoo at Barista went far beyond just installing a new system.",
+        "We now have clear KPIs that are easy to track, giving us full visibility into our operations. That visibility allowed us to optimize staffing and reduce inefficiencies, resulting in over $25,000 in monthly labor cost savings.",
+        "This wasn't just an implementation, it was a real operational shift.",
+      ],
+      initials: "AM",
+      name: "Anna Manco",
+      role: "Production Manager — Barista",
     },
     {
-      quote: "We migrated from NetSuite to Odoo with Banyan handling everything. Zero data loss, minimal downtime, and a system that fits us perfectly. Best technology decision we've made.",
+      quote: [
+        "We migrated from NetSuite to Odoo with Banyan handling everything. Zero data loss, minimal downtime, and a system that fits us perfectly. Best technology decision we've made.",
+      ],
       initials: "JT",
       name: "James Thornton",
       role: "CEO — Pinnacle Health Group, Orlando",
@@ -610,7 +620,11 @@ function ClientStories() {
           {stories.map((s, i) => (
             <article key={i} className="story-card">
               <span className="story-mark" aria-hidden="true">&ldquo;</span>
-              <p className="story-quote">{s.quote}</p>
+              <div className="story-quote">
+                {(Array.isArray(s.quote) ? s.quote : [s.quote]).map((p, j) => (
+                  <p key={j}>{p}</p>
+                ))}
+              </div>
               <footer className="story-foot">
                 <div className="story-avatar" aria-hidden="true">{s.initials}</div>
                 <div className="story-meta">
@@ -652,11 +666,16 @@ function ClientStories() {
           pointer-events: none;
         }
         .story-quote {
-          font-family: var(--sans);
-          font-size: 16px;
-          line-height: 1.6;
-          color: var(--bone-100);
           flex: 1;
+          display: flex;
+          flex-direction: column;
+          gap: 14px;
+        }
+        .story-quote p {
+          font-family: var(--sans);
+          font-size: 15px;
+          line-height: 1.65;
+          color: var(--bone-100);
           letter-spacing: -0.005em;
           margin: 0;
         }
