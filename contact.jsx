@@ -8,12 +8,18 @@ function ContactPage() {
   const [sent, setSent] = useStateC(false);
   const [submitting, setSubmitting] = useStateC(false);
   const [error, setError] = useStateC('');
+  const [consent, setConsent] = useStateC(false);
+  const [showPrivacy, setShowPrivacy] = useStateC(false);
   useEffectC(() => { if (window.applyAccent && window.BANYAN_TWEAK_DEFAULTS) window.applyAccent(window.BANYAN_TWEAK_DEFAULTS.accent); }, []);
 
   const set = (k, v) => setForm(f => ({ ...f, [k]: v }));
   const submit = async (e) => {
     e.preventDefault();
     if (submitting) return;
+    if (!consent) {
+      setError('Please agree to the consent statement before submitting.');
+      return;
+    }
     setSubmitting(true);
     setError('');
     try {
@@ -116,12 +122,36 @@ function ContactPage() {
                     </div>
                     <Field label="What are you trying to solve?" v={form.notes} onChange={v => set('notes', v)} as="textarea" placeholder="A few sentences is plenty." />
 
-                    <div className="contact-consent">
-                      <div className="contact-consent-check"><svg viewBox="0 0 16 16" width="12" height="12" fill="none"><path d="M3 8 L 7 12 L 13 4" stroke="var(--moss-400)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/></svg></div>
-                      <span style={{ fontSize: 13, color: 'var(--bone-300)' }}>I consent to Banyan storing this submission to prepare for the diagnostic. We don't share, sell, or spam. Read our <a href="#" style={{ color: 'var(--moss-400)' }}>privacy policy</a>.</span>
-                    </div>
+                    <label className="contact-consent" style={{ cursor: 'pointer' }}>
+                      <input
+                        type="checkbox"
+                        checked={consent}
+                        onChange={e => { setConsent(e.target.checked); if (e.target.checked) setError(''); }}
+                        style={{ position: 'absolute', opacity: 0, pointerEvents: 'none' }}
+                      />
+                      <div
+                        className={`contact-consent-check${consent ? ' is-checked' : ''}`}
+                        aria-hidden="true"
+                      >
+                        {consent && (
+                          <svg viewBox="0 0 16 16" width="12" height="12" fill="none">
+                            <path d="M3 8 L 7 12 L 13 4" stroke="var(--moss-400)" strokeWidth="2" strokeLinecap="round" strokeLinejoin="round"/>
+                          </svg>
+                        )}
+                      </div>
+                      <span style={{ fontSize: 13, color: 'var(--bone-300)' }}>
+                        I consent to Banyan storing this submission to prepare for the diagnostic. We don't share, sell, or spam. Read our{' '}
+                        <a
+                          href="#"
+                          onClick={e => { e.preventDefault(); e.stopPropagation(); setShowPrivacy(true); }}
+                          style={{ color: 'var(--moss-400)' }}
+                        >
+                          privacy policy
+                        </a>.
+                      </span>
+                    </label>
 
-                    <button type="submit" disabled={submitting} className="btn btn-primary" style={{ width: '100%', justifyContent: 'space-between', padding: '18px 24px', fontSize: 15, opacity: submitting ? 0.7 : 1, cursor: submitting ? 'not-allowed' : 'pointer' }}>
+                    <button type="submit" disabled={submitting || !consent} className="btn btn-primary" style={{ width: '100%', justifyContent: 'space-between', padding: '18px 24px', fontSize: 15, opacity: (submitting || !consent) ? 0.55 : 1, cursor: (submitting || !consent) ? 'not-allowed' : 'pointer' }}>
                       {submitting ? 'Sending…' : 'Request my diagnostic'} <span className="btn-arrow">→</span>
                     </button>
                     {error && (
@@ -151,6 +181,52 @@ function ContactPage() {
         </section>
       </main>
       <Footer />
+
+      {showPrivacy && (
+        <div
+          className="privacy-overlay"
+          onClick={() => setShowPrivacy(false)}
+          role="dialog"
+          aria-modal="true"
+          aria-label="Privacy policy"
+        >
+          <div className="privacy-modal" onClick={e => e.stopPropagation()}>
+            <button
+              type="button"
+              className="privacy-close"
+              onClick={() => setShowPrivacy(false)}
+              aria-label="Close privacy policy"
+            >
+              ×
+            </button>
+            <span className="eyebrow">Privacy</span>
+            <h3 style={{ fontSize: 28, lineHeight: 1.15, marginTop: 16 }}>How we handle your information.</h3>
+            <p className="privacy-body" style={{ marginTop: 20 }}>
+              When you submit the diagnostic form, we collect your name, work email, company, team size, industry, current stage, and the notes you write. We use this information for one purpose: to prepare for and respond to your diagnostic request.
+            </p>
+            <h4 className="privacy-h">What we do with it</h4>
+            <ul className="privacy-list">
+              <li>Store it securely on infrastructure operated by Banyan and our form processor (Web3Forms).</li>
+              <li>Read it ourselves so an architect can prepare a useful response.</li>
+              <li>Reach out to you by email or phone using the contact details you provide.</li>
+            </ul>
+            <h4 className="privacy-h">What we don't do</h4>
+            <ul className="privacy-list">
+              <li>We don't sell, rent, or share your information with third parties for marketing.</li>
+              <li>We don't add you to a newsletter or drip campaign without your explicit opt-in.</li>
+              <li>We don't use your submission to train AI models.</li>
+            </ul>
+            <h4 className="privacy-h">Your rights</h4>
+            <p className="privacy-body">
+              You can ask us to delete your submission at any time by emailing <a href="mailto:hello@gobanyan.consulting" style={{ color: 'var(--moss-400)' }}>hello@gobanyan.consulting</a>. We'll confirm deletion within five business days.
+            </p>
+            <p className="privacy-body" style={{ marginTop: 20, fontSize: 12, color: 'var(--bone-400)' }}>
+              Last updated: May 2026.
+            </p>
+          </div>
+        </div>
+      )}
+
       <style>{`
         .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: start; }
         @media (max-width: 1000px) { .contact-grid { grid-template-columns: 1fr; gap: 60px; } }
@@ -167,8 +243,38 @@ function ContactPage() {
         .field input:focus, .field select:focus, .field textarea:focus { outline: none; border-color: var(--moss-400); background: var(--ink-200); }
         .field textarea { min-height: 100px; resize: vertical; }
         .field select { appearance: none; background-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 16 16' fill='none'%3E%3Cpath d='M4 6 L 8 10 L 12 6' stroke='%23B8B2A6' stroke-width='1.4'/%3E%3C/svg%3E"); background-position: right 14px center; background-repeat: no-repeat; padding-right: 40px; }
-        .contact-consent { display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: var(--ink-100); border: 1px solid var(--glass-line); border-radius: 12px; }
-        .contact-consent-check { width: 18px; height: 18px; border-radius: 4px; background: var(--moss-900); border: 1px solid var(--moss-700); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; }
+        .contact-consent { position: relative; display: flex; gap: 12px; align-items: flex-start; padding: 16px; background: var(--ink-100); border: 1px solid var(--glass-line); border-radius: 12px; transition: border-color 0.2s; }
+        .contact-consent:hover { border-color: var(--glass-line-strong); }
+        .contact-consent-check { width: 18px; height: 18px; border-radius: 4px; background: transparent; border: 1px solid var(--bone-400); display: flex; align-items: center; justify-content: center; flex-shrink: 0; margin-top: 2px; transition: background 0.15s, border-color 0.15s; }
+        .contact-consent-check.is-checked { background: var(--moss-900); border-color: var(--moss-700); }
+
+        .privacy-overlay {
+          position: fixed; inset: 0; background: rgba(0, 0, 0, 0.55);
+          backdrop-filter: blur(6px); -webkit-backdrop-filter: blur(6px);
+          display: flex; align-items: center; justify-content: center;
+          padding: 24px; z-index: 1000; animation: fadeIn 0.18s ease-out;
+        }
+        .privacy-modal {
+          position: relative; max-width: 560px; width: 100%; max-height: 85vh; overflow-y: auto;
+          background: var(--ink-200); border: 1px solid var(--glass-line-strong);
+          border-radius: 16px; padding: 40px 36px;
+          animation: slideUp 0.22s ease-out;
+        }
+        .privacy-close {
+          position: absolute; top: 16px; right: 16px;
+          width: 32px; height: 32px; border-radius: 50%;
+          background: transparent; border: 1px solid var(--glass-line);
+          color: var(--bone-300); font-size: 22px; line-height: 1; cursor: pointer;
+          display: flex; align-items: center; justify-content: center;
+          transition: background 0.15s, color 0.15s;
+        }
+        .privacy-close:hover { background: var(--glass-fill); color: var(--bone-100); }
+        .privacy-h { font-family: var(--sans); font-size: 13px; font-weight: 500; color: var(--bone-100); margin-top: 24px; margin-bottom: 8px; letter-spacing: 0.02em; }
+        .privacy-body { font-size: 14px; line-height: 1.6; color: var(--bone-300); margin: 0; }
+        .privacy-list { font-size: 14px; line-height: 1.6; color: var(--bone-300); margin: 0; padding-left: 18px; }
+        .privacy-list li { margin-bottom: 6px; }
+        @keyframes fadeIn { from { opacity: 0; } to { opacity: 1; } }
+        @keyframes slideUp { from { opacity: 0; transform: translateY(8px); } to { opacity: 1; transform: translateY(0); } }
         .contact-trust { display: flex; gap: 20px; flex-wrap: wrap; padding-top: 8px; }
         .contact-trust-item { display: inline-flex; align-items: center; gap: 8px; font-family: var(--mono); font-size: 11px; color: var(--bone-300); letter-spacing: 0.04em; }
       `}</style>
