@@ -597,8 +597,8 @@ function ClientStories() {
         "We migrated from NetSuite to Odoo with Banyan handling everything. Zero data loss, minimal downtime, and a system that fits us perfectly. Best technology decision we've made.",
       ],
       initials: "JT",
-      name: "James Thornton",
-      role: "CEO — Pinnacle Health Group, Orlando",
+      name: "Jacob Thornton",
+      role: "CEO — Peninsula Health Group, Orlando",
     },
   ];
   return (
