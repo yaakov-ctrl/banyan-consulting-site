@@ -182,13 +182,24 @@ function Team() {
     },
     {
       name: 'Sam Feuer',
-      role: 'Customer Success & Support',
-      bio: "The person who picks up when something is on fire — and the person who makes sure it isn't. Owns post-go-live customer experience: support tiers, training, super-user development, and the quarterly health checks that keep your system from drifting.",
-      cred: 'Customer Success Lead',
+      role: 'Customer Success & Sales',
+      bio: "The person who picks up when something is on fire — and the person who makes sure it isn't. Owns the full post-sales arc: onboarding, support tiers, training, super-user development, and the quarterly health checks that keep your system from drifting.",
+      cred: 'Customer Success & Sales Lead',
     },
-    { name: 'TBA', role: 'Senior Implementation Architect', bio: 'Coming soon — manufacturing & distribution focus.', cred: 'Open role', placeholder: true },
-    { name: 'TBA', role: 'AI & Data Migration Lead', bio: 'Coming soon — owns the Banyan AI Toolkit and migrations from legacy ERPs.', cred: 'Open role', placeholder: true },
-    { name: 'TBA', role: 'Bilingual Training & Adoption Lead', bio: 'Coming soon — EN/ES training, change management, super-user programs.', cred: 'Open role', placeholder: true },
+    {
+      name: 'Nikhil Agarwal',
+      role: 'Senior Software Architect',
+      bio: 'Brings deep technical depth to complex Odoo builds — custom module development, integrations, and the architecture decisions that determine whether a system scales or buckles. The engineer in the room who makes sure the build matches the design.',
+      cred: 'Senior Software Architect',
+    },
+    {
+      name: '+9 AI Operational Experts',
+      role: 'Implementation & AI Delivery',
+      bio: 'Our wider delivery bench — AI engineers, Odoo module specialists, data migration architects, change-management leads, and bilingual training consultants. Every engagement is staffed from this pool based on scope and vertical. Senior-only, operations-trained, no offshore handoffs.',
+      cred: 'AI-Native · Senior Only · Operations-Trained',
+      tags: ['AI Engineering', 'Data Migration', 'Change Management', 'Module Dev', 'EN/ES Training', 'ERP Recovery'],
+      group: true,
+    },
   ];
   return (
     <section style={{ padding: '88px 0 96px', borderTop: '1px solid var(--glass-line)', background: 'var(--ink-200)' }}>
@@ -200,21 +211,33 @@ function Team() {
         </div>
         <div className="team-grid">
           {team.map((m, i) => (
-            <Reveal key={m.name + i} delay={i * 50}>
-              <div className={`team-card ${m.placeholder ? 'placeholder' : ''} ${m.featured ? 'featured' : ''}`}>
-                <div className="team-portrait">
-                  <div className="team-portrait-inner">
-                    <span style={{ fontSize: 56, color: m.placeholder ? 'var(--bone-400)' : 'var(--moss-400)', fontWeight: 500, letterSpacing: '-0.04em' }}>
-                      {m.placeholder ? '—' : m.name.split(' ').map(s => s[0]).join('')}
+            <Reveal key={m.name + i} delay={i * 50} className={m.group ? 'team-reveal-wide' : ''}>
+              <div className={`team-card ${m.featured ? 'featured' : ''} ${m.group ? 'group' : ''}`}>
+                <div className={`team-portrait ${m.group ? 'team-portrait-group' : ''}`}>
+                  {m.group ? (
+                    <div className="team-group-dots">
+                      {[...Array(9)].map((_, di) => (
+                        <div key={di} className="team-group-dot" style={{ animationDelay: `${di * 80}ms` }} />
+                      ))}
+                      <div className="team-group-count">+9</div>
+                    </div>
+                  ) : (
+                    <span style={{ fontSize: 56, color: 'var(--moss-400)', fontWeight: 500, letterSpacing: '-0.04em' }}>
+                      {m.name.split(' ').map(s => s[0]).join('')}
                     </span>
-                  </div>
+                  )}
                 </div>
                 <div className="team-body">
                   <h3 style={{ fontSize: 24, lineHeight: 1.1, fontWeight: 500, letterSpacing: '-0.02em' }}>{m.name}</h3>
-                  <div className="mono" style={{ fontSize: 12, color: m.placeholder ? 'var(--bone-400)' : 'var(--moss-400)', letterSpacing: '0.08em', marginTop: 8 }}>{m.role.toUpperCase()}</div>
+                  <div className="mono" style={{ fontSize: 12, color: 'var(--moss-400)', letterSpacing: '0.08em', marginTop: 8 }}>{m.role.toUpperCase()}</div>
                   <p style={{ fontSize: 14, color: 'var(--bone-300)', marginTop: 16, lineHeight: 1.55 }}>{m.bio}</p>
+                  {m.tags && (
+                    <div className="team-tags">
+                      {m.tags.map(tag => <span key={tag} className="team-tag">{tag}</span>)}
+                    </div>
+                  )}
                   <div className="team-cred">
-                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2 L 21 6 L 21 12 C 21 17, 17 21, 12 22 C 7 21, 3 17, 3 12 L 3 6 Z" stroke={m.placeholder ? 'var(--bone-400)' : 'var(--moss-400)'} strokeWidth="1.4" /><path d="M8 12 L 11 15 L 16 9" stroke={m.placeholder ? 'var(--bone-400)' : 'var(--moss-400)'} strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
+                    <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2 L 21 6 L 21 12 C 21 17, 17 21, 12 22 C 7 21, 3 17, 3 12 L 3 6 Z" stroke="var(--moss-400)" strokeWidth="1.4" /><path d="M8 12 L 11 15 L 16 9" stroke="var(--moss-400)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     <span>{m.cred}</span>
                   </div>
                 </div>
@@ -228,14 +251,20 @@ function Team() {
         @media (max-width: 800px) { .team-grid { grid-template-columns: 1fr; } }
         .team-grid > .reveal { display: flex; }
         .team-grid > .reveal > .team-card { flex: 1; }
+        .team-grid > .team-reveal-wide { grid-column: 1 / -1; }
         .team-card { background: var(--ink-100); border: 1px solid var(--glass-line); border-radius: 18px; padding: 24px; display: grid; grid-template-columns: 120px 1fr; gap: 24px; align-items: start; }
         .team-card.featured { border-color: var(--moss-700); background: var(--ink-300); box-shadow: var(--shadow-accent); }
-        .team-card.placeholder { opacity: 0.6; }
-        .team-card.placeholder .team-portrait { background: linear-gradient(135deg, var(--ink-200), var(--ink-100)); }
+        .team-card.group { border-color: var(--moss-800); background: linear-gradient(135deg, var(--ink-300) 0%, var(--ink-100) 100%); }
         @media (max-width: 600px) { .team-card { grid-template-columns: 1fr; } }
         .team-portrait { width: 120px; height: 140px; border-radius: 14px; background: linear-gradient(135deg, var(--ink-300), var(--ink-200)); display: flex; align-items: center; justify-content: center; border: 1px solid var(--glass-line); }
-        .team-cred { display: inline-flex; align-items: center; gap: 8px; margin-top: 18px; padding: 6px 12px; background: var(--moss-900); border-radius: 999px; font-family: var(--mono); font-size: 10px; color: var(--moss-300); letter-spacing: 0.06em; }
-        .team-card.placeholder .team-cred { background: var(--ink-100); color: var(--bone-400); border: 1px dashed var(--glass-line); }
+        .team-portrait-group { background: linear-gradient(135deg, var(--moss-900), var(--ink-300)); border-color: var(--moss-800); position: relative; overflow: hidden; flex-direction: column; gap: 6px; }
+        .team-group-dots { display: grid; grid-template-columns: repeat(3, 10px); gap: 7px; position: relative; }
+        .team-group-dot { width: 10px; height: 10px; border-radius: 50%; background: var(--moss-600); opacity: 0.7; }
+        .team-group-count { position: absolute; bottom: -26px; left: 50%; transform: translateX(-50%); font-family: var(--serif); font-size: 22px; font-weight: 500; color: var(--moss-300); letter-spacing: -0.04em; white-space: nowrap; }
+        .team-portrait-group { justify-content: center; }
+        .team-tags { display: flex; flex-wrap: wrap; gap: 6px; margin-top: 16px; }
+        .team-tag { font-family: var(--mono); font-size: 10px; color: var(--moss-300); background: var(--moss-900); border: 1px solid var(--moss-800); border-radius: 999px; padding: 4px 10px; letter-spacing: 0.06em; }
+        .team-cred { display: inline-flex; align-items: center; gap: 8px; margin-top: 14px; padding: 6px 12px; background: var(--moss-900); border-radius: 999px; font-family: var(--mono); font-size: 10px; color: var(--moss-300); letter-spacing: 0.06em; }
       `}</style>
     </section>
   );
