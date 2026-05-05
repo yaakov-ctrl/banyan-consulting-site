@@ -211,7 +211,7 @@ function Team() {
         </div>
         <div className="team-grid">
           {team.map((m, i) => (
-            <Reveal key={m.name + i} delay={i * 50} className={m.group ? 'team-reveal-wide' : ''}>
+            <Reveal key={m.name + i} delay={i * 50}>
               <div className={`team-card ${m.featured ? 'featured' : ''} ${m.group ? 'group' : ''}`}>
                 <div className={`team-portrait ${m.group ? 'team-portrait-group' : ''}`}>
                   {m.group ? (
