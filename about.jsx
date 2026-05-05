@@ -195,9 +195,8 @@ function Team() {
     {
       name: '+9 AI Operational Experts',
       role: 'Implementation & AI Delivery',
-      bio: 'Our wider delivery bench — AI engineers, Odoo module specialists, data migration architects, change-management leads, and bilingual training consultants. Every engagement is staffed from this pool based on scope and vertical. Senior-only, operations-trained, no offshore handoffs.',
+      bio: 'Our wider delivery bench — AI engineers, Odoo module specialists, data migration architects, change-management leads, and bilingual training consultants. Staffed to scope, senior-only, no offshore handoffs.',
       cred: 'AI-Native · Senior Only · Operations-Trained',
-      tags: ['AI Engineering', 'Data Migration', 'Change Management', 'Module Dev', 'EN/ES Training', 'ERP Recovery'],
       group: true,
     },
   ];
@@ -231,11 +230,6 @@ function Team() {
                   <h3 style={{ fontSize: 24, lineHeight: 1.1, fontWeight: 500, letterSpacing: '-0.02em' }}>{m.name}</h3>
                   <div className="mono" style={{ fontSize: 12, color: 'var(--moss-400)', letterSpacing: '0.08em', marginTop: 8 }}>{m.role.toUpperCase()}</div>
                   <p style={{ fontSize: 14, color: 'var(--bone-300)', marginTop: 16, lineHeight: 1.55 }}>{m.bio}</p>
-                  {m.tags && (
-                    <div className="team-tags">
-                      {m.tags.map(tag => <span key={tag} className="team-tag">{tag}</span>)}
-                    </div>
-                  )}
                   <div className="team-cred">
                     <svg viewBox="0 0 24 24" width="14" height="14" fill="none"><path d="M12 2 L 21 6 L 21 12 C 21 17, 17 21, 12 22 C 7 21, 3 17, 3 12 L 3 6 Z" stroke="var(--moss-400)" strokeWidth="1.4" /><path d="M8 12 L 11 15 L 16 9" stroke="var(--moss-400)" strokeWidth="1.6" strokeLinecap="round" strokeLinejoin="round" /></svg>
                     <span>{m.cred}</span>
