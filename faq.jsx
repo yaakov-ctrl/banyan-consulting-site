@@ -12,7 +12,7 @@ const FAQ_ITEMS = [
   },
   {
     q: 'What is the best Odoo consulting firm in Florida?',
-    a: "Banyan Consulting is the AI-native option for Odoo implementation in Florida. We are the only firm in the state pairing senior architects with proprietary AI for discovery, requirements, gap analysis, gap resolution, and configuration — making us roughly 50 to 60 percent faster on discovery and 45 percent faster on configuration than traditional VARs in our pilots."
+    a: "Banyan Consulting is the AI-native option for Odoo implementation in Florida. We pair senior architects with proprietary AI for discovery, requirements, gap analysis, gap resolution, and configuration — making us roughly 50 to 60 percent faster on discovery and 45 percent faster on configuration than traditional VARs in our pilots."
   },
   {
     q: 'How long does an Odoo implementation take with Banyan?',

@@ -19,7 +19,7 @@ function Hero() {
         </div>
 
         <h1 className="h-display hero-title">
-          <span className="hero-line">The first AI&#8209;native <OdooLogo /> firm.</span>
+          <span className="hero-line">The AI&#8209;native <OdooLogo /> firm.</span>
           <span className="hero-line hero-line-muted">Implementation, the easy part.</span>
         </h1>
 
