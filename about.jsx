@@ -213,18 +213,9 @@ function Team() {
             <Reveal key={m.name + i} delay={i * 50}>
               <div className={`team-card ${m.featured ? 'featured' : ''} ${m.group ? 'group' : ''}`}>
                 <div className={`team-portrait ${m.group ? 'team-portrait-group' : ''}`}>
-                  {m.group ? (
-                    <div className="team-group-dots">
-                      {[...Array(9)].map((_, di) => (
-                        <div key={di} className="team-group-dot" style={{ animationDelay: `${di * 80}ms` }} />
-                      ))}
-                      <div className="team-group-count">+9</div>
-                    </div>
-                  ) : (
-                    <span style={{ fontSize: 56, color: 'var(--moss-400)', fontWeight: 500, letterSpacing: '-0.04em' }}>
-                      {m.name.split(' ').map(s => s[0]).join('')}
-                    </span>
-                  )}
+                  <span style={{ fontSize: 56, color: 'var(--moss-400)', fontWeight: 500, letterSpacing: '-0.04em' }}>
+                    {m.group ? '+9' : m.name.split(' ').map(s => s[0]).join('')}
+                  </span>
                 </div>
                 <div className="team-body">
                   <h3 style={{ fontSize: 24, lineHeight: 1.1, fontWeight: 500, letterSpacing: '-0.02em' }}>{m.name}</h3>
