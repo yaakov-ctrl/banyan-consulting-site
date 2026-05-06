@@ -313,7 +313,7 @@ section {
 .nav-brand {
   display: flex;
   align-items: center;
-  gap: 12px;
+  gap: 10px;
 }
 .nav-brand-mark {
   width: 32px;
@@ -432,7 +432,7 @@ section {
   .nav-brand .mono[style] { display: none !important; } /* hide FL·USA pill */
   /* Tighten brand block so the burger stays reachable */
   .nav-brand { gap: 10px; min-width: 0; flex: 1 1 auto; overflow: hidden; }
-  .nav-brand-mark-img { width: 42px !important; height: 42px !important; }
+  .nav-brand-mark-img { width: 40px !important; height: 40px !important; }
   .nav-right { gap: 6px; flex-shrink: 0; }
   /* Solid scrolled background — backdrop-filter is unreliable on mobile */
   .nav { background: var(--nav-bg-mobile, var(--ink-100)); }

@@ -111,7 +111,7 @@ function BanyanWordmark({ size = 22, subtitle = true }) {
     <span style={{ display: 'inline-flex', flexDirection: 'column', lineHeight: 1, gap: 3 }}>
       <span style={{
         fontFamily: 'var(--sans)',
-        fontWeight: 600,
+        fontWeight: 700,
         fontSize: size,
         letterSpacing: '-0.03em',
         color: 'var(--bone-100)',
@@ -192,8 +192,8 @@ function Nav({ active = "home" }) {
     <React.Fragment>
       <nav className="nav" style={scrolled ? { background: 'var(--nav-bg-scrolled)' } : {}}>
         <a className="nav-brand" href="index.html" aria-label="Banyan Consulting — Home">
-          <img src="banyan-mark-v2.png" alt="" className="nav-brand-mark-img" width="48" height="48" style={{ display: 'block', objectFit: 'contain', objectPosition: 'center' }} />
-          <BanyanWordmark size={26} subtitle={true} />
+          <img src="banyan-mark-v2.png" alt="" className="nav-brand-mark-img" width="44" height="44" style={{ display: 'block', objectFit: 'contain', objectPosition: 'center' }} />
+          <BanyanWordmark size={28} subtitle={true} />
           <span className="mono" style={{ fontSize: 9, color: 'var(--bone-300)', letterSpacing: '0.22em', marginLeft: 8, paddingLeft: 10, borderLeft: '1px solid var(--glass-line)', alignSelf: 'center' }}>FL · USA</span>
         </a>
 
