@@ -192,7 +192,7 @@ function Nav({ active = "home" }) {
     <React.Fragment>
       <nav className="nav" style={scrolled ? { background: 'var(--nav-bg-scrolled)' } : {}}>
         <a className="nav-brand" href="index.html" aria-label="Banyan Consulting — Home">
-          <img src="banyan-mark-256.png" alt="" className="nav-brand-mark-img" width="36" height="36" style={{ display: 'block', objectFit: 'contain', objectPosition: 'center' }} />
+          <img src="banyan-mark-v2.png" alt="" className="nav-brand-mark-img" width="36" height="36" style={{ display: 'block', objectFit: 'contain', objectPosition: 'center' }} />
           <BanyanWordmark size={20} subtitle={true} />
           <span className="mono" style={{ fontSize: 9, color: 'var(--bone-300)', letterSpacing: '0.22em', marginLeft: 8, paddingLeft: 10, borderLeft: '1px solid var(--glass-line)', alignSelf: 'center' }}>FL · USA</span>
         </a>
@@ -257,7 +257,7 @@ function Footer() {
         <div className="foot-grid">
           <div>
             <div className="foot-mark" style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
-              <img src="banyan-mark-256.png" alt="" width="54" height="54" style={{ display: 'block', objectFit: 'contain', objectPosition: 'center' }} />
+              <img src="banyan-mark-v2.png" alt="" width="54" height="54" style={{ display: 'block', objectFit: 'contain', objectPosition: 'center' }} />
               <BanyanWordmark size={32} subtitle={true} />
             </div>
             <p className="foot-tag">
