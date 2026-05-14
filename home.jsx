@@ -385,7 +385,7 @@ function WhyOdoo() {
 /* ---------- ODOO IN ACTION ---------- */
 function OdooInAction() {
   return (
-    <section style={{ padding: '120px 0', borderTop: '1px solid var(--glass-line)' }}>
+    <section className="oia-section">
       <div className="shell">
 
         <div className="oia-head">
@@ -446,6 +446,15 @@ function OdooInAction() {
       </div>
 
       <style>{`
+        /* ---- Section ---- */
+        .oia-section {
+          padding: 120px 0;
+          border-top: 1px solid var(--glass-line);
+        }
+        @media (max-width: 768px) { .oia-section { padding: 80px 0; } }
+        @media (max-width: 480px)  { .oia-section { padding: 60px 0; } }
+
+        /* ---- Header ---- */
         .oia-head {
           display: grid;
           grid-template-columns: 1.4fr 1fr;
@@ -453,8 +462,11 @@ function OdooInAction() {
           align-items: end;
           margin-bottom: 48px;
         }
-        @media (max-width: 880px) { .oia-head { grid-template-columns: 1fr; gap: 24px; } }
+        @media (max-width: 880px) {
+          .oia-head { grid-template-columns: 1fr; gap: 16px; margin-bottom: 28px; }
+        }
 
+        /* ---- Video ---- */
         .oia-video-wrap {
           position: relative;
           width: 100%;
@@ -465,6 +477,7 @@ function OdooInAction() {
           overflow: hidden;
         }
 
+        /* ---- Reality block ---- */
         .oia-reality {
           display: grid;
           grid-template-columns: 1fr 1fr;
@@ -476,21 +489,21 @@ function OdooInAction() {
         @media (max-width: 900px) { .oia-reality { grid-template-columns: 1fr; } }
 
         .oia-reality-left {
-          padding: clamp(32px, 4vw, 56px);
+          padding: clamp(28px, 4vw, 56px);
           border-right: 1px solid var(--glass-line);
         }
         @media (max-width: 900px) {
           .oia-reality-left { border-right: none; border-bottom: 1px solid var(--glass-line); }
         }
-
         .oia-reality-right {
-          padding: clamp(32px, 4vw, 56px);
+          padding: clamp(28px, 4vw, 56px);
         }
 
+        /* ---- Left panel: big stat ---- */
         .oia-stat-n {
           font-family: var(--sans);
           font-weight: 500;
-          font-size: clamp(64px, 8vw, 96px);
+          font-size: clamp(56px, 8vw, 96px);
           line-height: 1;
           letter-spacing: -0.04em;
           color: var(--moss-400);
@@ -500,32 +513,36 @@ function OdooInAction() {
           color: var(--bone-300);
           letter-spacing: 0.06em;
           margin-top: 12px;
-          margin-bottom: 28px;
-          max-width: 28ch;
+          margin-bottom: 24px;
           line-height: 1.5;
         }
         .oia-reality-body {
           font-size: 15px;
           line-height: 1.65;
           color: var(--bone-200);
-          max-width: 52ch;
+        }
+        @media (max-width: 480px) {
+          .oia-reality-body { font-size: 14px; }
         }
 
+        /* ---- Right panel: mini stats ---- */
         .oia-mini-stats {
           display: grid;
           grid-template-columns: repeat(3, 1fr);
-          gap: 24px;
-          padding: 28px 0;
+          gap: 20px;
+          padding: 24px 0;
           border-top: 1px solid var(--glass-line);
           border-bottom: 1px solid var(--glass-line);
           margin-bottom: 4px;
         }
-        @media (max-width: 600px) { .oia-mini-stats { grid-template-columns: 1fr; gap: 20px; } }
+        @media (max-width: 480px) {
+          .oia-mini-stats { gap: 14px; padding: 20px 0; }
+        }
 
         .oia-mini-n {
           font-family: var(--sans);
           font-weight: 500;
-          font-size: clamp(28px, 3vw, 38px);
+          font-size: clamp(26px, 3vw, 38px);
           line-height: 1;
           color: var(--bone-100);
           letter-spacing: -0.03em;
@@ -536,6 +553,9 @@ function OdooInAction() {
           margin-top: 8px;
           letter-spacing: 0.06em;
           line-height: 1.5;
+        }
+        @media (max-width: 480px) {
+          .oia-mini-l { font-size: 10px; }
         }
       `}</style>
     </section>
