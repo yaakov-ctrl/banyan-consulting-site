@@ -382,6 +382,166 @@ function WhyOdoo() {
   );
 }
 
+/* ---------- ODOO IN ACTION ---------- */
+function OdooInAction() {
+  return (
+    <section style={{ padding: '120px 0', borderTop: '1px solid var(--glass-line)' }}>
+      <div className="shell">
+
+        <div className="oia-head">
+          <div>
+            <span className="eyebrow">Odoo 19 · Live demo</span>
+            <h2 className="h1" style={{ marginTop: 24, maxWidth: '22ch' }}>
+              See what's possible. Then understand why implementation is everything.
+            </h2>
+          </div>
+          <p className="lede" style={{ maxWidth: '42ch', color: 'var(--bone-200)', alignSelf: 'end' }}>
+            This is the platform. What happens next — translating your business into it, accurately — is where most projects break.
+          </p>
+        </div>
+
+        <div className="oia-video-wrap">
+          <iframe
+            src="https://www.youtube.com/embed/OZLP-SCHW7A"
+            title="Odoo 19 — Live Demo"
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            style={{ border: 'none', width: '100%', height: '100%', position: 'absolute', top: 0, left: 0 }}
+          />
+        </div>
+
+        <div className="oia-reality">
+          <div className="oia-reality-left">
+            <div className="oia-stat-n">70%</div>
+            <div className="oia-stat-l mono">of ERP implementations fail to deliver expected ROI</div>
+            <p className="oia-reality-body">
+              The demo looks great. The gap between that demo and a working system is your business — every workflow, exception, and edge case that has to be translated into accurate system configuration. Do it manually and you'll miss something. A missed process. A misconfigured rule. A wrong field mapping. These don't stay small — they compound into go-live failures and six-figure write-offs.
+            </p>
+          </div>
+          <div className="oia-reality-right">
+            <span className="eyebrow eyebrow-bone" style={{ marginBottom: 20, display: 'block' }}>The Banyan approach</span>
+            <p style={{ fontSize: 16, lineHeight: 1.65, color: 'var(--bone-100)', marginBottom: 32 }}>
+              We pair senior architects with proprietary AI to handle the translation — discovery, requirements, gap analysis, and configuration as one continuous process. Not a chain of disconnected handoffs.
+            </p>
+            <div className="oia-mini-stats">
+              <div className="oia-mini-stat">
+                <div className="oia-mini-n">3.4×</div>
+                <div className="oia-mini-l mono">faster than industry average</div>
+              </div>
+              <div className="oia-mini-stat">
+                <div className="oia-mini-n">92%</div>
+                <div className="oia-mini-l mono">first-pass migration accuracy</div>
+              </div>
+              <div className="oia-mini-stat">
+                <div className="oia-mini-n">48h</div>
+                <div className="oia-mini-l mono">to a live sandbox with your data</div>
+              </div>
+            </div>
+            <a className="btn btn-primary" href="contact.html" style={{ marginTop: 32 }}>
+              Book a free diagnostic <span className="btn-arrow">→</span>
+            </a>
+          </div>
+        </div>
+
+      </div>
+
+      <style>{`
+        .oia-head {
+          display: grid;
+          grid-template-columns: 1.4fr 1fr;
+          gap: 60px;
+          align-items: end;
+          margin-bottom: 48px;
+        }
+        @media (max-width: 880px) { .oia-head { grid-template-columns: 1fr; gap: 24px; } }
+
+        .oia-video-wrap {
+          position: relative;
+          width: 100%;
+          padding-bottom: 56.25%;
+          background: #000;
+          border: 1px solid var(--glass-line-strong);
+          border-radius: 12px 12px 0 0;
+          overflow: hidden;
+        }
+
+        .oia-reality {
+          display: grid;
+          grid-template-columns: 1fr 1fr;
+          background: var(--ink-200);
+          border: 1px solid var(--glass-line-strong);
+          border-top: none;
+          border-radius: 0 0 12px 12px;
+        }
+        @media (max-width: 900px) { .oia-reality { grid-template-columns: 1fr; } }
+
+        .oia-reality-left {
+          padding: clamp(32px, 4vw, 56px);
+          border-right: 1px solid var(--glass-line);
+        }
+        @media (max-width: 900px) {
+          .oia-reality-left { border-right: none; border-bottom: 1px solid var(--glass-line); }
+        }
+
+        .oia-reality-right {
+          padding: clamp(32px, 4vw, 56px);
+        }
+
+        .oia-stat-n {
+          font-family: var(--sans);
+          font-weight: 500;
+          font-size: clamp(64px, 8vw, 96px);
+          line-height: 1;
+          letter-spacing: -0.04em;
+          color: var(--moss-400);
+        }
+        .oia-stat-l {
+          font-size: 13px;
+          color: var(--bone-300);
+          letter-spacing: 0.06em;
+          margin-top: 12px;
+          margin-bottom: 28px;
+          max-width: 28ch;
+          line-height: 1.5;
+        }
+        .oia-reality-body {
+          font-size: 15px;
+          line-height: 1.65;
+          color: var(--bone-200);
+          max-width: 52ch;
+        }
+
+        .oia-mini-stats {
+          display: grid;
+          grid-template-columns: repeat(3, 1fr);
+          gap: 24px;
+          padding: 28px 0;
+          border-top: 1px solid var(--glass-line);
+          border-bottom: 1px solid var(--glass-line);
+          margin-bottom: 4px;
+        }
+        @media (max-width: 600px) { .oia-mini-stats { grid-template-columns: 1fr; gap: 20px; } }
+
+        .oia-mini-n {
+          font-family: var(--sans);
+          font-weight: 500;
+          font-size: clamp(28px, 3vw, 38px);
+          line-height: 1;
+          color: var(--bone-100);
+          letter-spacing: -0.03em;
+        }
+        .oia-mini-l {
+          font-size: 11px;
+          color: var(--bone-300);
+          margin-top: 8px;
+          letter-spacing: 0.06em;
+          line-height: 1.5;
+        }
+      `}</style>
+    </section>
+  );
+}
+
 /* ---------- SERVICES LIST ---------- */
 function ServicesSummary() {
   const services = [
@@ -789,6 +949,7 @@ function Home() {
         <ClientLogos />
         <TrustStrip />
         <WhyOdoo />
+        <OdooInAction />
         <ServicesSummary />
         <IndustriesGrid />
         <CaseStudies />
